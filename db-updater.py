@@ -18,6 +18,30 @@ import backend
 import pandas
 
 
+def get_selected_row(event):
+    index=list1.curselection()[0]
+    global selected_tuple
+    selected_tuple=list1.get(index)
+    e1.delete(0,END)
+    e1.insert(END,selected_tuple[1])
+    e2.delete(0,END)
+    e2.insert(END,selected_tuple[0])
+    e3.delete(0,END)
+    e3.insert(END,selected_tuple[2])
+    e4.delete(0,END)
+    e4.insert(END,selected_tuple[3])
+    e5.delete(0,END)
+    e5.insert(END,selected_tuple[4])
+    e6.delete(0,END)
+    e6.insert(END,selected_tuple[5])
+    e7.delete(0,END)
+    e7.insert(END,selected_tuple[6])
+    e8.delete(0,END)
+    e8.insert(END,selected_tuple[7])
+    e9.delete(0,END)
+    e9.insert(END,selected_tuple[8])
+
+
 def view_command():
     list1.delete(0,END)
     for row in backend.view().reset_index().values:
@@ -35,6 +59,12 @@ def modify_command():
                     market_text.get(),
                     tester_text.get())
     view_command()
+
+
+def delete_command():
+    backend.delete(selected_tuple[0])
+    view_command()
+
 
 window = Tk()
 window.title("CRASH PROCESSOR")
@@ -102,11 +132,14 @@ sb1.grid(row=4,column=8,rowspan=6)
 list1.configure(yscrollcommand=sb1.set)
 sb1.configure(command=list1.yview)
 
+list1.bind('<<ListboxSelect>>',get_selected_row)
+
+
 b1=Button(window,text="View All",width=12,command=view_command)
 b1.grid(row=3,column=0)
 b2=Button(window,text="Add/Modify",width=12,command=modify_command)
 b2.grid(row=3,column=1)
-b5=Button(window,text="Delete",width=12)
+b5=Button(window,text="Delete",width=12,command=delete_command)
 b5.grid(row=3,column=7)
 
 l10 = Label(window, text="CRASH FOLDER")
