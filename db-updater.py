@@ -18,29 +18,34 @@ import backend
 import pandas
 
 
-def get_selected_row(event):
-    index=list1.curselection()[0]
-    global selected_tuple
-    selected_tuple=list1.get(index)
-    e1.delete(0,END)
-    e1.insert(END,selected_tuple[1])
-    e2.delete(0,END)
-    e2.insert(END,selected_tuple[0])
-    e3.delete(0,END)
-    e3.insert(END,selected_tuple[2])
-    e4.delete(0,END)
-    e4.insert(END,selected_tuple[3])
-    e5.delete(0,END)
-    e5.insert(END,selected_tuple[4])
-    e6.delete(0,END)
-    e6.insert(END,selected_tuple[5])
-    e7.delete(0,END)
-    e7.insert(END,selected_tuple[6])
-    e8.delete(0,END)
-    e8.insert(END,selected_tuple[7])
-    e9.delete(0,END)
-    e9.insert(END,selected_tuple[8])
+selected_tuple = None
 
+
+def get_selected_row(event):
+    try:
+        index=list1.curselection()[0]
+        global selected_tuple
+        selected_tuple=list1.get(index)
+        e1.delete(0,END)
+        e1.insert(END,selected_tuple[1])
+        e2.delete(0,END)
+        e2.insert(END,selected_tuple[0])
+        e3.delete(0,END)
+        e3.insert(END,selected_tuple[2])
+        e4.delete(0,END)
+        e4.insert(END,selected_tuple[3])
+        e5.delete(0,END)
+        e5.insert(END,selected_tuple[4])
+        e6.delete(0,END)
+        e6.insert(END,selected_tuple[5])
+        e7.delete(0,END)
+        e7.insert(END,selected_tuple[6])
+        e8.delete(0,END)
+        e8.insert(END,selected_tuple[7])
+        e9.delete(0,END)
+        e9.insert(END,selected_tuple[8])
+    except:
+        pass
 
 def view_command():
     list1.delete(0,END)
